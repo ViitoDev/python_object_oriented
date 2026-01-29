@@ -1,9 +1,7 @@
 class music_class():
-    name = ""
-    artist = ""
-    duration = int
+    def __init__(self, name = "", artist = "", duration = 0):
+        self.name = name
+        self.artist = artist
+        self.duration = duration
 
-music1 = music_class()
-music1.name = "Bohemian Rhapsody"
-music1.artist = "Queen"
-music1.duration = 355
+music1 = music_class(name = "Bohemian Rhapsody", artist = "Queen", duration = 355)
