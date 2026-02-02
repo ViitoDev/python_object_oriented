@@ -15,9 +15,9 @@ class Restaurant:
     
     @classmethod
     def show_restaurants(cls):
-        print(f"{"Restaurant name".ljust(25)} | {"Category".ljust(25)} | {"Status"}")
+        print(f"{"Restaurant name".ljust(25)} | {"Category".ljust(25)} | {"Avaluate".ljust(25)} |{"Status"}")
         for restaurant in cls.restaurants:
-            print(f"{restaurant._name.ljust(25)} | {restaurant._category.ljust(25)} | {restaurant.active}")
+            print(f"{restaurant._name.ljust(25)} | {restaurant._category.ljust(25)} | {str(restaurant.restaurant_media).ljust(25)} |{restaurant.active}")
 
     @property
     def active(self):
@@ -29,3 +29,12 @@ class Restaurant:
     def receive_avaluate(self, client, note):
         avaluate = Avaluate(client, note)
         self._avaluate.append(avaluate)
+
+    @property
+    def restaurant_media(self):
+        if not self._avaluate:
+            return 0
+        notes_sum = sum(avaluate._note for avaluate in self._avaluate)
+        notes_quantity = len(self._avaluate)
+        media = round(notes_sum / notes_quantity, 1)
+        return media
