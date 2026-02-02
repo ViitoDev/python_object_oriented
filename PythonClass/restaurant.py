@@ -1,3 +1,5 @@
+from PythonClass.avaluate import Avaluate
+
 class Restaurant:
     restaurants = []
 
@@ -5,6 +7,7 @@ class Restaurant:
         self._name = name.title()
         self._category = category.upper()
         self._active = False
+        self._avaluate = []
         Restaurant.restaurants.append(self)
 
     def __str__(self):
@@ -23,8 +26,6 @@ class Restaurant:
     def state_alternate(self):
         self._active = not self._active
 
-restaurant_rossi = Restaurant("rossi", "italian")
-restaurant_rossi.state_alternate()
-restaurant_vito = Restaurant("vito", "pizzeria")
-
-Restaurant.show_restaurants()
+    def receive_avaluate(self, client, note):
+        avaluate = Avaluate(client, note)
+        self._avaluate.append(avaluate)
