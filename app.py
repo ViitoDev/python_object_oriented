@@ -4,7 +4,9 @@ from PythonClass.menu.item import item
 
 restaurant = Restaurant("Burguer", "Hamburguers")
 drink1 = drinks("Coke", 5.0, "small")
+drink1.applicate_discount()
 item1 = item("Bread", 2.0, "The best bread of the city!")
+item1.applicate_discount()
 restaurant.add_item_menu(drink1)
 restaurant.add_item_menu(item1)
 

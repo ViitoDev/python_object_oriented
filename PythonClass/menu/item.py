@@ -7,3 +7,6 @@ class item(item_menu):
 
     def __str__(self):
         return self._name
+    
+    def applicate_discount(self):
+        self._price -= (self._price * 0.05)

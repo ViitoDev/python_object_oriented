@@ -1,7 +1,7 @@
 from PythonClass.avaluate import Avaluate
 from PythonClass.menu.item_menu import item_menu
 
-class Restaurant(item_menu):
+class Restaurant:
     restaurants = []
 
     def __init__(self, name, category):
@@ -50,5 +50,9 @@ class Restaurant(item_menu):
     def show_menu(self):
         print(f"Cardapio do restaurante {self._name}\n")
         for i,item in enumerate(self._menu, start=1):
-            message = f"{i}. Name: {item._name} | Price:  R${item._price}"
-            print(message)
+            if hasattr(item, "description"):
+                message_item = f"{i}. Name: {item._name} | Price:  R${item._price} | Descprition: {item.description}"
+                print(message_item)
+            else:
+                message_drink = f"{i}. Name: {item._name} | Price:  R${item._price} | Size: {item.size}"
+                print(message_drink)
