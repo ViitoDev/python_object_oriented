@@ -27,13 +27,14 @@ class Restaurant:
         self._active = not self._active
 
     def receive_avaluate(self, client, note):
-        avaluate = Avaluate(client, note)
-        self._avaluate.append(avaluate)
+        if 0 < note <= 5:
+            avaluate = Avaluate(client, note)
+            self._avaluate.append(avaluate)
 
     @property
     def restaurant_media(self):
         if not self._avaluate:
-            return 0
+            return '-'
         notes_sum = sum(avaluate._note for avaluate in self._avaluate)
         notes_quantity = len(self._avaluate)
         media = round(notes_sum / notes_quantity, 1)
