@@ -1,6 +1,7 @@
 from PythonClass.avaluate import Avaluate
+from PythonClass.menu.item_menu import item_menu
 
-class Restaurant:
+class Restaurant(item_menu):
     restaurants = []
 
     def __init__(self, name, category):
@@ -8,6 +9,7 @@ class Restaurant:
         self._category = category.upper()
         self._active = False
         self._avaluate = []
+        self._menu = []
         Restaurant.restaurants.append(self)
 
     def __str__(self):
@@ -39,3 +41,14 @@ class Restaurant:
         notes_quantity = len(self._avaluate)
         media = round(notes_sum / notes_quantity, 1)
         return media
+    
+    def add_item_menu(self,item):
+        if isinstance(item, item_menu):
+            self._menu.append(item)
+
+    @property
+    def show_menu(self):
+        print(f"Cardapio do restaurante {self._name}\n")
+        for i,item in enumerate(self._menu, start=1):
+            message = f"{i}. Name: {item._name} | Price:  R${item._price}"
+            print(message)

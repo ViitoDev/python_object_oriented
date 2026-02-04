@@ -5,10 +5,11 @@ from PythonClass.menu.item import item
 restaurant = Restaurant("Burguer", "Hamburguers")
 drink1 = drinks("Coke", 5.0, "small")
 item1 = item("Bread", 2.0, "The best bread of the city!")
+restaurant.add_item_menu(drink1)
+restaurant.add_item_menu(item1)
 
 def main():
-    print(drink1)
-    print(item1)
+    restaurant.show_menu
 
 if __name__ == "__main__":
     main()
